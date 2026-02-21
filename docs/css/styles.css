@@ -1,0 +1,394 @@
+:root{
+  --bg: #0b0b0b;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,.65);
+  --stroke: rgba(255,255,255,.18);
+  --container: 1120px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a{ color: inherit; text-decoration:none; }
+
+.container{
+  width: min(100% - 40px, var(--container));
+  margin: 0 auto;
+}
+
+/* HTML */
+html {
+  scroll-behavior: smooth;
+}
+
+/* HEADER */
+.header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.header__inner{
+  height: 70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand img{ height: 34px; }
+.nav{ display:flex; gap:18px; font-size:14px; color: var(--muted); }
+.nav a:hover{ color: var(--text); }
+
+/* HERO */
+.hero{
+  min-height: 100vh;
+  position: relative;
+  display:flex;
+  align-items:center;
+  padding-top: 70px; /* compensa header fijo */
+}
+.hero__bg{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.15) 100%),
+    url("../assets/images/hero_background.png") center/cover no-repeat;
+    
+}
+.hero__content{
+  position:relative;
+  padding: 64px 0;
+  max-width: 560px;
+}
+.hero h1{
+  font-weight: 800;
+  letter-spacing: .5px;
+  line-height: .95;
+  font-size: clamp(42px, 5vw, 64px);
+}
+.hero__subtitle{
+  margin-top: 18px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+.hero__actions{
+  margin-top: 22px;
+  display:flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:44px;
+  padding:0 22px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.05em;
+  cursor:pointer;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background-color .25s ease,
+    border-color .25s ease;
+}
+
+/* -------- BOTÓN PRINCIPAL -------- */
+.btn--primary{
+  background:#ffffff;
+  color:#000000;
+  box-shadow: 0 0 0 rgba(255,255,255,0);
+}
+
+.btn--primary:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.35),
+    0 0 18px rgba(255,255,255,.15);
+}
+
+/* efecto al hacer click */
+.btn--primary:active{
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+
+/* -------- BOTÓN SECUNDARIO -------- */
+
+.btn--ghost{
+  border:1px solid rgba(255,255,255,.25);
+  color:#ffffff;
+  background:transparent;
+}
+
+.btn--ghost:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.6);
+  background: rgba(255,255,255,.05);
+}
+
+.btn--ghost:active{
+  transform: translateY(0);
+}
+
+/* HERO anim */
+.hero__content > *{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+.hero__content.is-visible > *{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger */
+.hero__content.is-visible h1{ transition-delay: 80ms; }
+.hero__content.is-visible .hero__subtitle{ transition-delay: 180ms; }
+.hero__content.is-visible .hero__actions{ transition-delay: 280ms; }
+
+
+/* COLECCIÓN */
+.collection{
+  padding: 0 0 80px;
+}
+.collection__title{
+  background: rgba(255,255,255,.06);
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 22px 0;
+  text-align:center;
+  letter-spacing: .18em;
+  font-weight: 700;
+}
+.collection__grid{
+  margin-top: 26px;
+  display:grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card{
+  position:relative;
+  border-radius: 12px;
+  overflow:hidden;
+  background: #111;
+  border: 1px solid rgba(255,255,255,.06);
+  aspect-ratio: 16/9;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.card.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition: transform .4s ease, filter .4s ease;
+  filter: brightness(.75);
+}
+.card__label{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-shadow: 0 2px 10px rgba(0,0,0,.6);
+
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.95);
+
+  padding: 20px;
+}
+
+.card:hover img{
+  transform: scale(1.06);
+  filter: brightness(.6);
+}
+
+/* ABOUT */
+.about{
+  padding: 70px 0 90px;
+}
+.about__grid{
+  display:grid;
+  gap: 28px;
+  grid-template-columns: 1.2fr .8fr;
+  align-items:center;
+}
+.about h2{
+  font-size: clamp(28px, 3.2vw, 44px);
+  letter-spacing: .08em;
+}
+.about p{
+  margin-top: 14px;
+  color: var(--muted);
+  max-width: 520px;
+}
+.about__logo{
+  display:flex;
+  justify-content:flex-end;
+}
+.about__logo img{
+  width: min(420px, 100%);
+  opacity: .95;
+}
+
+/* FOOTER */
+.footer{
+  padding: 50px 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.footer__grid{
+  display:grid;
+  gap: 24px;
+  grid-template-columns: 1.2fr 1fr 1fr;
+}
+.footer h3{
+  font-size: 14px;
+  letter-spacing: .16em;
+  margin-bottom: 10px;
+}
+.footer p, .footer a{
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  display:block;
+  margin: 6px 0;
+}
+.footer a:hover{ color: var(--text); }
+
+.footer__bottom{
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .08em;
+}
+
+/* CATÁLOGO--COLECCIÓN*/
+.catalogo{
+  padding: 80px 0;
+}
+
+.catalogo__grid{
+  margin-top: 30px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.producto{
+  background: #111;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.producto img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.producto__info{
+  padding: 16px;
+}
+
+.producto__nombre{
+  font-weight: 600;
+}
+
+.producto__precio{
+  margin-top: 8px;
+  color: #ccc;
+}
+/* CATÁLOGO--COLECCIÓN*/
+
+/* RESPONSIVE */
+@media (max-width: 900px){
+  .collection__grid{ grid-template-columns: 1fr; }
+  .about__grid{ grid-template-columns: 1fr; }
+  .about__logo{ justify-content:flex-start; }
+  .footer__grid{ grid-template-columns: 1fr; }
+}
+
+/*nav bar */
+@media (max-width: 900px){
+  .nav{
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .nav a{
+    font-size: 13px;
+  }
+}
+
+
+/* Conocé Squad */
+@media (max-width: 900px){
+  .about__grid{
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .about__logo{
+    justify-content: center;
+    margin-top: 18px;
+  }
+
+  .about__logo img{
+    width: min(280px, 80%);
+  }
+}
+
+/* HERO */
+@media (max-width: 720px){
+  .hero__content{
+    max-width: 100%;
+  }
+
+  .hero h1{
+    font-size: clamp(34px, 9vw, 48px);
+  }
+
+  .hero__actions{
+    gap: 10px;
+  }
+
+  .btn{
+    width: 100%;
+  }
+}
+
+/* SECCIONES */
+section{
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+section.section-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
