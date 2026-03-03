@@ -16,10 +16,31 @@
       </a>
 
       <nav class="nav">
-        <a href="#coleccion">Catálogo</a>
-        <a href="#conoce">Conócenos</a>
-        <a href="#contacto">Contáctanos</a>
+        <a href="#coleccion">Colección</a>
+        <a href="#conoce">Marca</a>
+        <!-- <a href="#contacto">Contáctanos</a> -->
       </nav>
+
+      <!-- Mobile: botón hamburguesa -->
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-controls="mobileNav" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Mobile: menú overlay -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <button class="mobile-nav__backdrop" type="button" aria-label="Cerrar menú"></button>
+      <div class="mobile-nav__panel" role="dialog" aria-modal="true" aria-label="Menú">
+
+
+        <nav class="mobile-nav__links">
+          <a href="#coleccion">Colección</a>
+          <a href="#conoce">Marca</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
     </div>
   </header>
 
@@ -29,79 +50,114 @@
       <div class="hero__bg"></div>
       <div class="container hero__content">
         <h1>ENTRENÁ<br/>EN EQUIPO.</h1>
-        <p class="hero__subtitle">ROPA DISEÑADA PARA ENTRENAR MEJOR, JUNTOS.</p>
+        <p class="hero__subtitle">NACIMOS PARA ENTRENAR, JUNTOS.</p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#coleccion">Ver Catálogo</a>
-          <a class="btn btn--ghost" href="#conoce">Contáctanos</a>
+          <a class="btn btn--primary" href="#coleccion" target="_blank" rel="noopener">Explorar colección</a>
+          <!-- <a class="btn btn--ghost" href="#conoce">Contáctanos</a> -->
         </div>
       </div>
     </section>
     
     <!-- COLECCIÓN -->
     <section id="coleccion" class="collection">
-      <div class="collection__title">EXPLORÁ LA COLECCIÓN</div>
+      <div class="collection__title">COLECCIÓN</div>
 
       <div class="container collection__grid">
+        <!--
         <a class="card" href="#">
           <img src="assets/images/pantalones_shorts.png" alt="Pantalones / Shorts" />
           <div class="card__label">PANTALONES / SHORTS</div>
         </a>
-
+        -->
         <a class="card" href="#">
           <img src="assets/images/remeras_musculosas.png" alt="Remeras / Musculosas" />
           <div class="card__label">REMERAS / MUSCULOSAS</div>
         </a>
-
+        <!--
         <a class="card" href="#">
           <img src="assets/images/conjuntos.png" alt="Conjuntos" />
           <div class="card__label">CONJUNTOS</div>
         </a>
+        -->
       </div>
     </section>
 
     <!-- CONOCÉ SQUAD -->
-    <section id="conoce" class="about">
-      <div class="container about__grid">
-        <div class="about__text">
-          <h2>CONOCÉ SQUAD</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit fusce, 
-            pulvinar mi taciti habitant per porttitor duis volutpat ullamcorper, 
-            augue vestibulum aliquet tincidunt facilisi integer himenaeos. 
-            Augue purus in condimentum nisl velit vehicula nam taciti cum habitasse
-            tempus at et, curabitur enim ultrices nascetur mi dictumst varius penatibus 
-            litora suspendisse vel. 
-          </p>
-        </div>
+<section id="conoce" class="about">
+  <div class="container about__grid">
 
-        <div class="about__logo">
-          <img src="assets/logos/logo_squad_en_svg/squad_blanco.svg" alt="Squad" />
-        </div>
-      </div>
-    </section>
-  </main>
+    <div class="about__text">
+      <h2>CONOCÉ SQUAD</h2>
+
+      <h3>Nacimos entrenando juntos</h3>
+      <p>
+        Squad no empezó en una oficina. Empezó en un gimnasio.
+        Tres amigos, mismos horarios, mismas metas, mismas ganas de superarse.
+      </p>
+      <p>
+        Lo que comenzó como entrenar en equipo terminó convirtiéndose en una idea más grande:
+        crear ropa pensada para el esfuerzo, el progreso y la constancia.
+      </p>
+
+      <h3>Nuestra Mentalidad</h3>
+      <p>
+        Creemos en la cultura del equipo. En entrenar acompañado.
+        En motivarte con alguien al lado. En construir disciplina.
+      </p>
+      <p>
+        Cada prenda está pensada para eso: comodidad real, diseño limpio e identidad fuerte.
+      </p>
+
+      <h3>Cómo trabajamos</h3>
+      <p>
+        Diseñamos cada colección con foco en funcionalidad y estética.
+        Producción nacional. Materiales seleccionados. <!--Drops limitados.--> 
+      </p>
+      <p>
+        No buscamos saturar. Buscamos hacerlo bien.
+      </p>
+
+      <h3>Lo que estamos construyendo</h3>
+      <p>
+        Queremos que Squad sea sinónimo de entrenar en equipo.
+        Una marca que represente disciplina, constancia y progreso.
+      </p>
+      <p>
+        Estamos construyendo eso paso a paso.
+      </p>
+
+    </div>
+
+    <div class="about__logo">
+      <img src="assets/logos/logo_squad_en_svg/squad_blanco.svg" alt="Squad" />
+    </div>
+
+  </div>
+</section>
+
+
 
   <!-- FOOTER -->
   <footer id="contacto" class="footer">
     <div class="container footer__grid">
       <div>
         <h3>SQUAD</h3>
-        <p>Ropa de entrenamiento<br/>Envíos a todo el país</p>
+        <p>Nacimos para entrenar, juntos.<br/>Envíos a todo el país</p>
       </div>
 
       <div>
         <h3>SECCIONES</h3>
         <a href="#top">Inicio</a>
-        <a href="#coleccion">Productos</a>
-        <a href="#conoce">Conócenos</a>
+        <a href="#coleccion">Colección</a>
+        <a href="#conoce">Marca</a>
       </div>
 
       <div>
         <h3>CONTACTO</h3>
-        <a href="#">WhatsApp</a>
-        <a href="#">Instagram</a>
-        <a href="mailto:">Mail</a>
+        <a href="https://wa.me/549XXXXXXXXXX?text=Hola%2C%20vengo%20desde%20la%20web%20de%20Squad%20y%20quiero%20consultar%20por%20talles%20y%20disponibilidad." target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://instagram.com/squadfitness.ar" target="_blank" rel="noopener">Instagram</a>
+        <p>squadmerch2026@gmail.com</p>
       </div>
     </div>
 

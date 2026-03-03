@@ -63,3 +63,46 @@ cards.forEach(card => {
 });
 
 
+// MENÚ HAMBURGUESA (mobile) //
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".nav-toggle");
+  const mobileNav = document.getElementById("mobileNav");
+  if (!toggle || !mobileNav) return;
+
+  const backdrop = mobileNav.querySelector(".mobile-nav__backdrop");
+  const links = mobileNav.querySelectorAll("a");
+
+  const openMenu = () => {
+    mobileNav.classList.add("is-open");
+    document.body.classList.add("nav-open");
+    toggle.setAttribute("aria-expanded", "true");
+    mobileNav.setAttribute("aria-hidden", "false");
+  };
+
+  const closeMenu = () => {
+    mobileNav.classList.remove("is-open");
+    document.body.classList.remove("nav-open");
+    toggle.setAttribute("aria-expanded", "false");
+    mobileNav.setAttribute("aria-hidden", "true");
+  };
+
+  toggle.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.contains("is-open");
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  if (backdrop) backdrop.addEventListener("click", closeMenu);
+
+  links.forEach((a) => a.addEventListener("click", closeMenu));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  // Si pasan a desktop, cerramos por las dudas
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) closeMenu();
+  });
+});
+
+
